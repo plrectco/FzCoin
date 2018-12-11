@@ -1,6 +1,7 @@
 import time
 
 MAX_BLOCK_ENTRIES = 2500
+MINER_REWARD = 10
 
 
 class Block:
@@ -32,12 +33,16 @@ class Block:
         self.entries.append((entry, signature))
 
     def check_block_balance(self, name):
-        balance = 0.
+        if creator == name:
+            balance = MINER_REWARD
+        else:
+            balance = 0.
+
         for entry, signature in self.entries:
             payer, payee, amount, timestamp = entry
             if name == payer:
                 balance -= amount
-            if name == payee:
+            elif name == payee:
                 balance += amount
         return balance
 
@@ -49,7 +54,7 @@ def get_blockchain_length(block):
         block = block.prev_block
         len += 1
     return len
-    
+
 
 
 def verify_signature(text, signature, pk):
