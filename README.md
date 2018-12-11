@@ -1,2 +1,3 @@
 # FzCoin
 A minimal but fully functional Cryptocurrency
+In working progress...
