@@ -4,12 +4,12 @@ MAX_BLOCK_ENTRIES = 2500
 
 
 class Block:
-    def __init__(self):
-        prev_block = None
-        nxt_block = None
+    def __init__(self, prev_block):
+        self.prev_block = prev_block
+        self.nxt_block = None
 
-        creator = None
-        block_signature = None
+        self.creator = None
+        self.block_signature = None
 
         self.entries = []
 
@@ -41,8 +41,15 @@ class Block:
                 balance += amount
         return balance
 
-def check_balance(name):
-    pass
+
+def get_blockchain_length(block):
+    len = 0
+
+    while isinstance(block, Block):
+        block = block.prev_block
+        len += 1
+    return len
+    
 
 
 def verify_signature(text, signature, pk):
