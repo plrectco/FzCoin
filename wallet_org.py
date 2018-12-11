@@ -1,12 +1,9 @@
 import utils
-import crypto
+from user_base import UserBase
 
-class WalletOrg:
+class WalletOrg(UserBase):
     def __init__(self):
-        self.name = None # 8 byte
-        self.sk = None
-        self.cert = None
-
+        super().__init__(name)
         self.users = []
 
     def add_user(self, name, pk):
