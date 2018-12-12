@@ -94,8 +94,14 @@ def cert_gen(subject, issuer, pk, filename='certificate.pem'):
 
 
 def hash(x):
-    pass
+    digest = hashes.Hash(hashes.SHA256(), backend=default_backend())
+    digest.update(x)
+    return digest.finalize()
 
 
 def dhash(x):
     return hash(hash(x))
+
+
+def sign_entry(text, pk):
+    pass

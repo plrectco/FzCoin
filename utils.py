@@ -22,3 +22,7 @@ def verify_email(email):
 
 def verify_signature(text, signature, pk):
     pass
+
+
+def verify_certificate(cert, root_CA):
+    pass
