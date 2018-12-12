@@ -1,15 +1,10 @@
 import time
 import re
-import sys
 
 from blockchain import Blockchain
 
 def get_timestamp():
-    return time.time()
-
-
-def get_size(x):
-    return sys.getsizeof(x)
+    return int(time.time() * 1000)
 
 
 def time_elapsed(timestamp):
@@ -36,8 +31,4 @@ def verify_certificate(cert, root_CA):
 
 
 def verify_blockchain(blockchain):
-    pass
-
-
-def lookup_pk(name):
     pass

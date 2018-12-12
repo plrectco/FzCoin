@@ -26,7 +26,7 @@ class Blockchain:
             len += 1
         return len
 
-    def __str__(self):
+    def __repr__(self):
         num_transactions = len(self.block)
         output_total = 0.    # TODO
         height = len(self)

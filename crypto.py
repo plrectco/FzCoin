@@ -20,7 +20,7 @@ def keygen():
 
     sk = key.private_bytes(encoding=serialization.Encoding.PEM,
                         format=serialization.PrivateFormat.TraditionalOpenSSL,
-                        encryption_algorithm=serialization.BestAvailableEncryption(b"passphrase")
+                        encryption_algorithm=serialization.BestAvailableEncryption(b"passphrase"))
 
 '''
 Information required in certificate (for both subjects and issuers)
@@ -84,7 +84,6 @@ def cert_gen(subject, issuer, pk, filename='certificate.pem'):
     ).not_valid_after(
         # Our certificate will be valid for 10 days
         datetime.datetime.utcnow() + datetime.timedelta(days=10)
-    )
     # Sign our certificate with our private key
     ).sign(key, hashes.SHA256(), default_backend())
 
