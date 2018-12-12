@@ -1,6 +1,8 @@
 import time
 import re
 
+from blockchain import Blockchain
+
 def get_timestamp():
     return time.time()
 
@@ -25,4 +27,8 @@ def verify_signature(text, signature, pk):
 
 
 def verify_certificate(cert, root_CA):
+    pass
+
+
+def verify_blockchain(blockchain):
     pass

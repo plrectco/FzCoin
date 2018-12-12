@@ -15,3 +15,11 @@ class Blockchain:
             block = block.prev_block
 
         return balance
+
+    def __len__(self):
+        block = self.block
+
+        while isinstance(block, Block):
+            block = block.prev_block
+            len += 1
+        return len

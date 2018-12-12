@@ -65,14 +65,5 @@ class Block:
         return balance
 
 
-def get_blockchain_length(block):
-    len = 0
-
-    while isinstance(block, Block):
-        block = block.prev_block
-        len += 1
-    return len
-
-
 def lookup_pk(name):
     pass
