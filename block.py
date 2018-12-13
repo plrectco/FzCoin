@@ -17,7 +17,6 @@ class Block:
         prev_block.nxt_block = self
 
         self.entries = []
-        self.merkle_root = None
 
         self.prev_block = prev_block
         self.nxt_block = None
@@ -26,6 +25,19 @@ class Block:
         signature = crypto.sign_entry(init_entry, pk)
         self.add_entry(init_entry, signature)
 
+
+    def build_merkle_tree(self):
+	L = len(self.entries) # Number of leave
+	N = 2 * L - 1 # Number of nodes
+        self.merkle_tree = [None] * (N + 1)
+		
+	for i in range(L):
+	    self.merkle_tree[i-L] = crypto.dhash(bytes(self.entries[i]))
+
+	for i in reversed(range(1,N-L)):
+	    self.merkle_tree[i] = crypto.dhash(self.merkle_tree[2*i] ^ self.merkle_tree[2*i+1])
+
+	self.merkle_root = self.merkle_tree[1] 
 
     def proof_of_work(self):
         self.nounce = 0
